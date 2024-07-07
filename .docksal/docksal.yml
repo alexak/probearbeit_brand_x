@@ -1,0 +1,36 @@
+#services:
+#  cli:
+#    image: docksal/cli:php8.3-3.8
+#    environment:
+#      - DOCROOT=public
+#    volumes:
+#      - project_root:/var/www:rw,cached
+#    working_dir: /var/www#
+#
+#  web:
+#    image: docksal/apache:2.4-2.5
+#    volumes:
+#      # Project root volume
+#      - project_root:/var/www:ro,nocopy,cached
+#      - ${PROJECT_ROOT}/.docksal/etc/apache/vhost.conf:/etc/apache2/sites-enabled/000-default.conf:ro
+#    labels:
+#      - io.docksal.virtual-host=${VIRTUAL_HOST},*.${VIRTUAL_HOST},${VIRTUAL_HOST}.*
+#      - io.docksal.cert-name=${VIRTUAL_HOST_CERT_NAME:-none}
+#      - io.docksal.project-root=${PROJECT_ROOT}
+#      - io.docksal.permanent=${SANDBOX_PERMANENT:-false}
+#    environment:
+#      - APACHE_DOCUMENTROOT=/var/www/${DOCROOT:-docroot}
+#    # cli has to be up before web
+#    depends_on:
+#      - cli#
+#
+#  db:
+#    image: docksal/db:1.1-mysql-8.0
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=root
+
+
+#volumes:
+#  project_root:
+#    external: true
+
